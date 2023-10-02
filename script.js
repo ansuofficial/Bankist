@@ -115,27 +115,40 @@ const calcDisplaySummary = function (acc) {
   labelSumInterest.textContent = `${interest}€`;
 };
 
-btnLogin.addEventListener('click', function (e) {
-  e.preventDefault();
+const createUsernames = function (accs) {
+  accs.forEach(function (acc) {
+    acc.username = acc.owner
+      .toLowerCase()
+      .split(" ")
+      .map((name) => name[0])
+      .join("");
+  });
+};
+createUsernames(accounts);
 
-  currentAccount = accounts.find(
-    acc => acc.owner === inputLoginUsername.value
-  );
-  console.log(currentAccount);
+// btnLogin.addEventListener("click", function (e) {
+//   e.preventDefault();
 
-  if (currentAccount?.pin === Number(inputLoginPin.value)) {
-    // Display UI and message
-    labelWelcome.textContent = `Welcome back, ${currentAccount.owner.split(' ')[0]}`;
-    containerApp.style.opacity = 100;
+//   currentAccount = accounts.find(
+//     (acc) => acc.owner === inputLoginUsername.value
+//   );
+//   console.log(currentAccount);
 
-    // Clear input fields
-    inputLoginUsername.value = inputLoginPin.value = '';
-    inputLoginPin.blur();
+//   if (currentAccount?.pin === Number(inputLoginPin.value)) {
+//     // Display UI and message
+//     labelWelcome.textContent = `Welcome back, ${
+//       currentAccount.owner.split(" ")[0]
+//     }`;
+//     containerApp.style.opacity = 100;
 
-    // Update UI
-    updateUI(currentAccount);
-  }
-});
+//     // Clear input fields
+//     inputLoginUsername.value = inputLoginPin.value = "";
+//     inputLoginPin.blur();
+
+//     // Update UI
+//     updateUI(currentAccount);
+//   }
+// });
 
 const updateUI = function (acc) {
   displayMovements(acc.movements);
