@@ -2,28 +2,28 @@
 
 // Data
 const account1 = {
-  owner: 'Jonas Schmedtmann',
+  owner: 'Modou Lamin Jagne',
   movements: [200, 450, -400, 3000, -650, -130, 70, 1300],
   interestRate: 1.2, // %
   pin: 1111,
 };
 
 const account2 = {
-  owner: 'Jessica Davis',
+  owner: 'Ebrima Konteh',
   movements: [5000, 3400, -150, -790, -3210, -1000, 8500, -30],
   interestRate: 1.5,
   pin: 2222,
 };
 
 const account3 = {
-  owner: 'Steven Thomas Williams',
+  owner: 'Muhammed Jammeh',
   movements: [200, -200, 340, -300, -20, 50, 400, -460],
   interestRate: 0.7,
   pin: 3333,
 };
 
 const account4 = {
-  owner: 'Sarah Smith',
+  owner: 'Modou Jallow',
   movements: [430, 1000, 700, 50, 90],
   interestRate: 1,
   pin: 4444,
@@ -126,30 +126,6 @@ const createUsernames = function (accs) {
 };
 createUsernames(accounts);
 
-// btnLogin.addEventListener("click", function (e) {
-//   e.preventDefault();
-
-//   currentAccount = accounts.find(
-//     (acc) => acc.owner === inputLoginUsername.value
-//   );
-//   console.log(currentAccount);
-
-//   if (currentAccount?.pin === Number(inputLoginPin.value)) {
-//     // Display UI and message
-//     labelWelcome.textContent = `Welcome back, ${
-//       currentAccount.owner.split(" ")[0]
-//     }`;
-//     containerApp.style.opacity = 100;
-
-//     // Clear input fields
-//     inputLoginUsername.value = inputLoginPin.value = "";
-//     inputLoginPin.blur();
-
-//     // Update UI
-//     updateUI(currentAccount);
-//   }
-// });
-
 const updateUI = function (acc) {
   displayMovements(acc.movements);
 
@@ -164,7 +140,9 @@ btnLogin.addEventListener('click', function (e) {
   e.preventDefault();
 
   currentAccount = accounts.find(
-    acc => acc.username === inputLoginUsername.value
+    (acc) => acc.username === inputLoginUsername.value
+  ) || accounts.find(
+    (acc) => acc.owner === inputLoginUsername.value
   );
   console.log(currentAccount);
 
